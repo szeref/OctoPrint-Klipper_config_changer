@@ -1,0 +1,31 @@
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, unicode_literals
+
+import octoprint.plugin
+import os
+import shutil
+
+class Klipper_config_changerPlugin(octoprint.plugin.TemplatePlugin,
+                       octoprint.plugin.SettingsPlugin):
+       
+	def get_settings_defaults(self):
+    		with open(os.path.expanduser('~/printer.cfg')) as f:
+    			tool = f.readline()
+    		tool = tool.replace("#", "")
+    		self._logger.info("tool")
+    		return dict(tool=tool)
+
+	def on_settings_save(self, data):
+		octoprint.plugin.SettingsPlugin.on_settings_save(self, data)	
+		shutil.copy(os.path.expanduser('~/printer_' + self._settings.get(["tool"]) + '.cfg'), os.path.expanduser('~/printer.cfg'))
+		self._printer.command("M114")
+
+	def get_template_configs(self):
+		return [
+			dict(type="navbar", custom_bindings=False),
+			dict(type="settings", custom_bindings=False)
+		]
+
+__plugin_name__ = "Klipper config changer"
+__plugin_pythoncompat__ = ">=2.7,<4"
+__plugin_implementation__ = Klipper_config_changerPlugin()

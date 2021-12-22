@@ -1,0 +1,4 @@
+include README.md
+recursive-include octoprint_klipper_config_changer/templates *
+recursive-include octoprint_klipper_config_changer/translations *
+recursive-include octoprint_klipper_config_changer/static *
