@@ -18,11 +18,6 @@ $(function() {
         // This is the constructor to call for instantiating the plugin
         KlipperConfigChangerViewModel,
 
-        // This is a list of dependencies to inject into the plugin, the order which you request
-        // here is the order in which the dependencies will be injected into your view model upon
-        // instantiation via the parameters argument
-        ["settingsViewModel"],
-
         // Finally, this is the list of selectors for all elements we want this view model to be bound to.
         ["#navbar_plugin_klipper_config_changer"]
     ]);
