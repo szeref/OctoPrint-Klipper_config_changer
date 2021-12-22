@@ -6,9 +6,9 @@ $(function() {
 
         // Open settings link
         self.openKlipperConfigChangerSettings = function () {
-		$("a#navbar_show_settings").click();
-      		$("li#settings_plugin_klipper_config_changer_link a").click();
-    	}; 
+        $("a#navbar_show_settings").click();
+              $("li#settings_plugin_klipper_config_changer_link a").click();
+        }; 
 
     }
 
