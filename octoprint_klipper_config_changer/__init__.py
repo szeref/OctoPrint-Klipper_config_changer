@@ -18,7 +18,8 @@ class Klipper_config_changerPlugin(octoprint.plugin.TemplatePlugin,
 	def on_settings_save(self, data):
 		octoprint.plugin.SettingsPlugin.on_settings_save(self, data)	
 		shutil.copy(os.path.expanduser('~/printer_' + self._settings.get(["tool"]) + '.cfg'), os.path.expanduser('~/printer.cfg'))
-		self._printer.command("M114")
+		self._printer.commands("RESTART")
+            	self.logInfo("Reloading Klipper Configuration.")
 
 	def get_template_configs(self):
 		return [
