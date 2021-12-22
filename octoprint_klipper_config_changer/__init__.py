@@ -9,7 +9,7 @@ class Klipper_config_changerPlugin(octoprint.plugin.TemplatePlugin,
                        octoprint.plugin.AssetPlugin,
                        octoprint.plugin.SettingsPlugin):
        
-s    def get_settings_defaults(self):
+    def get_settings_defaults(self):
         with open(os.path.expanduser('~/printer.cfg')) as f:
         tool = f.readline()
         tool = tool.replace("#", "")
